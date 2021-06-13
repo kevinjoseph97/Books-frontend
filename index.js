@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function getBook() {
     fetch(endPoint)
     .then(res => res.json())
-    .then(json => { 
-        json.data.forEach(book => {
+    .then(book => { 
+        book.data.forEach(book => {
             const bookMarkup = `
           <div data-id=${book.id}>
             <img src=${book.attributes.book_img} height="200" width="250">
