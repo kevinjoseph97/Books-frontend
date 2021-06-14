@@ -38,24 +38,32 @@ function getBook() {
 function createFormHandler(e) {
   e.preventDefault()
   // grab all the values
-  debugger;
+  // debugger;
   const userTitle = document.querySelector("#input-title").value
   const userAuthor = document.querySelector("#input-author").value
   const userImg = document.querySelector("#input-url").value
   const userGenre = document.querySelector("#genres").value
-  
-
-
-
-
-
-
+  const genreId = parseInt(userGenre)
+  postFetch(userTitle, userAuthor, userImg, genreId)
 }
 
 
+function postFetch(title, author, book_img, genre_id) {
+  // console.log(title, author, book_img, genre_id);
+  fetch("http://localhost:3000/api/v1/books", {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      title: title,
+      author: author,
+      book_img: book_img,
+      genre_id: genre_id
+    })
+  })
+  .then(response => response.json())
+  .then(cat => {
+    console.log(cat);
+  })
 
 
-
-
-
-// document.querySelector("#input-title").value
+}
