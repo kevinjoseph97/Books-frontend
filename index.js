@@ -5,12 +5,11 @@ const endPoint = "http://localhost:3000/api/v1/books"
 document.addEventListener('DOMContentLoaded', () => {
     getBook()
     
-    // 
+    // get the data from the form 
     const createBookForm = document.querySelector("#create-book-form")
 
-    // 
+    // event to listen for the click on the form and prvent the default 
     createBookForm.addEventListener("submit", (e) => createFormHandler(e))
-    // prevent default 
   
 });
 
@@ -35,17 +34,28 @@ function getBook() {
 }
 
 
+// implement a form handler adn make POST request
 function createFormHandler(e) {
   e.preventDefault()
-  const titleInput = document.querySelector('#input-title').value
-  const authorInput = document.querySelector('#input-author').value
-  const imageInput = document.querySelector('#book_img').value
-  const gnereInput = document.querySelector('#genres').value
-  const gnereId = parseInt(gnereInput)
-  postBook(titleInput, authorInput, imageInput, gnereInput)
+  // grab all the values
+  debugger;
+  const userTitle = document.querySelector("#input-title").value
+  const userAuthor = document.querySelector("#input-author").value
+  const userImg = document.querySelector("#input-url").value
+  const userGenre = document.querySelector("#genres").value
+  
+
+
+
+
+
+
 }
 
-function postBook(title, author, book_imng, genre_id) {
-  console.log(title, author, book_imng, genre_id)
 
-}
+
+
+
+
+
+// document.querySelector("#input-title").value
