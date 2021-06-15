@@ -18,7 +18,7 @@ function getBook() {
     .then(res => res.json())
     .then(book => { 
         book.data.forEach(book => {
-            const bookMarkup = `
+          const bookMarkup = `
           <div data-id=${book.id}>
             <img src=${book.attributes.book_img} height="200" width="250">
             <h3>${book.attributes.title}</h3>
@@ -61,9 +61,21 @@ function postFetch(title, author, book_img, genre_id) {
     })
   })
   .then(response => response.json())
-  .then(cat => {
-    console.log(cat);
+  .then(book => {
+    // console.log(book);
+    const bookData = book.data
+    const bookMarkup = `
+    <div data-id=${book.id}>
+      <img src=${bookData.attributes.book_img} height="200" width="250">
+      <h3>${bookData.attributes.title}</h3>
+      <p>${bookData.attributes.genre.name}</p>
+      <button data-id=${book.id}>edit</button>
+    </div>
+    <br><br>`;
+
+    document.querySelector('#book-container').innerHTML += bookMarkup
   })
+    
+  }
 
 
-}
