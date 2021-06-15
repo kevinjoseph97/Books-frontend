@@ -18,20 +18,15 @@ function getBook() {
     .then(res => res.json())
     .then(book => { 
         book.data.forEach(book => {
-          const bookMarkup = `
-          <div data-id=${book.id}>
-            <img src=${book.attributes.book_img} height="200" width="250">
-            <h3>${book.attributes.title}</h3>
-            <p>${book.attributes.genre.name}</p>
-            <button data-id=${book.id}>edit</button>
-          </div>
-          <br><br>`;
-
-          document.querySelector('#book-container').innerHTML += bookMarkup
+          // debugger;
+          let newBook = new Book(book, book.attributes )
+          document.querySelector('#book-container').innerHTML += newBook.render()
+          
         })
 
     });
 }
+
 
 
 // implement a form handler adn make POST request
