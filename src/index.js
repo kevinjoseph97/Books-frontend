@@ -5,7 +5,6 @@ document.addEventListener("click", (e) =>{ console.log("You just clicked on", e.
 // console log once the DOM is loaded 
 document.addEventListener('DOMContentLoaded', () => {
     getBook()
-    
     // get the data from the form 
     const createBookForm = document.querySelector("#create-book-form")
     // event to listen for the click on the form and prvent the default 
@@ -70,32 +69,6 @@ function createFormHandler(e) {
 }
 
 
-function postFetch(title, author, book_img, genre_id) {
-  // console.log(title, author, book_img, genre_id);
-  fetch(endPoint, {
-    method: 'POST',
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      title: title,
-      author: author,
-      book_img: book_img,
-      genre_id: genre_id
-    })
-  })
-  .then(response => response.json())
-  .then(book => {
-    // console.log(book);
-    const bookData = book.data
-    let newBook = new Book(bookData, bookData.attributes )
-    document.querySelector('#book-container').innerHTML += newBook.renderBook()
-
-
-  }) 
-
-  e.target.reset()
-    
-}
-
 
 
 
@@ -106,15 +79,15 @@ selectedBook.addEventListener("click", event =>{event.preventDefault();
       console.log(event.target)
 
       const id = event.target.dataset.id
-        const deleteBook = document.getElementById(id)
+        
       
-    
       fetch(`${endPoint}/${id}`, {
         method: "DELETE",
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json",
+        'Accept': 'application/json'}
       })
       .then(response => response.json())
-      .then(deleteBook.remove())
+      .then(event.target.parentElement.remove())
 
     
     }
