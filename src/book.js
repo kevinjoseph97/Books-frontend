@@ -1,9 +1,13 @@
 // console.log("heelo from book.js")
-// create this because we want to know the specfic object we want
+// object oriented js
+// this because we want to know the specfic instance we want or create 
+
+
 class Book {
 
     constructor(book, bookAttributes) {
         // debugger;
+        // using this is like calling self in rails.. 
         this.id = book.id
         this.title =  bookAttributes.title 
         this.author =  bookAttributes.author
@@ -12,6 +16,8 @@ class Book {
         Book.all.push(this)
     
     } 
+
+    
     renderBook() {
         // debugger
         // console.log(this);

@@ -1,14 +1,36 @@
 const endPoint = "http://localhost:3000/api/v1/books"
-// let divBook = document.querySelector('#book-container')
+let seeBookForm = false;
 
 document.addEventListener("click", (e) =>{ console.log("You just clicked on", e.target)})
 // console log once the DOM is loaded 
 document.addEventListener('DOMContentLoaded', () => {
     getBook()
     // get the data from the form 
-    const createBookForm = document.querySelector("#create-book-form")
+    const bookForm = document.querySelector("#create-book-form")
     // event to listen for the click on the form and prvent the default 
-    createBookForm.addEventListener("submit", (e) => createFormHandler(e))
+    bookForm.addEventListener("submit", (e) => createFormHandler(e))
+
+
+    
+  // set up form to hide or show 
+  const bookFormContainer = document.querySelector('.form-container');
+  const newBookButton = document.querySelector("#new-book-btn");
+
+  // add event listener to the add btn to be able to toggle it 
+  newBookButton.addEventListener("click", () => {
+
+    seeBookForm = !seeBookForm;
+    if (seeBookForm) {
+      bookFormContainer.style.display = "block";
+    } else {
+      bookFormContainer.style.display = "none";
+    }
+
+  });
+
+
+    
+    
   
 });
 
@@ -25,6 +47,37 @@ function getBook() {
 
     });
 }
+
+
+
+// // set up form to hide or show 
+// const bookFormContainer = document.querySelector('#form-container');
+// const newBookButton = document.querySelector(".new-book-btn");
+
+// // add event listener to the add btn to be able to toggle it 
+// newBookButton.addEventListener("click", () => {
+
+//   seeBookForm = !seeBookForm;
+//   if (seeBookForm) {
+//     bookFormContainer.style.display = "block";
+//   } else {
+//     bookFormContainer.style.display = "none";
+//   }
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
