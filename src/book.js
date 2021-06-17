@@ -21,7 +21,7 @@ class Book {
                   <h3>${this.title}</h3>
                   <p>${this.author}</p>
                   <p>${this.genre}</p>
-                  <button data-id=${this.id}>edit</button>
+                  
                   <button data-id="${this.id}" class="delete-btn">Delete</button>
                   
                 </div>
