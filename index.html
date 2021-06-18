@@ -4,27 +4,32 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="author" content="">
+        <title>Books List</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
-    <body>
+    <body style="background-color:grey;">
 
     
-      <div id="book-container">
+      <div id="book-container" >
         
       </div>
 
+      <p style="text-align:center">
+        <button id="new-book-btn">Add Book </button>
+        <br><br><br>
+      </p>
 
 
-      <div class="form-container">
-        <form id="create-book-form", style=" ">
-          <h3>Create a book!</h3>
+        <!-- form to get books -->
+      <div class="form-container",style="text-align:center">
+      
+        <form id="create-book-form", style="">
+          
       
           <input id='input-title' type="text" name="title" value="" placeholder="Enter your book name..." class="input-text">
           <br><br>
-          <textarea id='input-author' name="author" rows="8" cols="80" value="" placeholder="Enter your book author..."></textarea>
+          <input id='input-author' name="author", value="" placeholder="Enter your book author..."></input>
           <br><br>
           <input id='input-url' type="text" name="image" value="" placeholder="Enter your book image URL..." class="input-text">
           <br><br>
@@ -46,5 +51,6 @@
       
       <script type= "text/javascript" src="src/index.js"></script>
       <script type= "text/javascript" src="src/book.js"></script>
+      <script type= "text/javascript" src="src/services/API.js"></script>
     </body>
 </html>
