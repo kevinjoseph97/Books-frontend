@@ -13,6 +13,7 @@ class API {
             book.data.forEach(book => {
               // debugger;
               // newBook is a instacnce of the book class 
+            //   being able to pass in a whole object from constructor
               let newBook = new Book(book, book.attributes )
               document.querySelector('#book-container').innerHTML += newBook.renderBook()
               
