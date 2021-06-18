@@ -1,79 +1,68 @@
-const endPoint = "http://localhost:3000/api/v1/books"
+// const endPoint = "http://localhost:3000/api/v1/books"
 let seeBookForm = false;
 
+
+
+
+
+// so we can see what we are clicking on and dealing with 
 document.addEventListener("click", (e) =>{ console.log("You just clicked on", e.target)})
+
+
+
 // console log once the DOM is loaded 
 document.addEventListener('DOMContentLoaded', () => {
-    getBook()
+    // getBook()
+    API.fetchallBooks()
+
+
+
     // get the data from the form 
     const bookForm = document.querySelector("#create-book-form")
-    // event to listen for the click on the form and prvent the default 
+    // event to listen for the click on the form  
     bookForm.addEventListener("submit", (e) => createFormHandler(e))
 
 
+    // set up form to hide or show 
     
-  // set up form to hide or show 
-  const bookFormContainer = document.querySelector('.form-container');
-  const newBookButton = document.querySelector("#new-book-btn");
+    const bookFormContainer = document.querySelector('.form-container');
+    const newBookButton = document.querySelector("#new-book-btn");
 
-  // add event listener to the add btn to be able to toggle it 
-  newBookButton.addEventListener("click", () => {
+    // add event listener to the add btn to be able to toggle it 
+    newBookButton.addEventListener("click", () => {
 
-    seeBookForm = !seeBookForm;
-    if (seeBookForm) {
-      bookFormContainer.style.display = "block";
-    } else {
-      bookFormContainer.style.display = "none";
-    }
+      seeBookForm = !seeBookForm;
+      if (seeBookForm) {
+        bookFormContainer.style.display = "block";
+      } else {
+        bookFormContainer.style.display = "none";
+      }
 
-  });
-
-
-    
-    
-  
-});
-
-function getBook() {
-    fetch(endPoint)
-    .then(res => res.json())
-    .then(book => { 
-        book.data.forEach(book => {
-          // debugger;
-          let newBook = new Book(book, book.attributes )
-          document.querySelector('#book-container').innerHTML += newBook.renderBook()
-          
-        })
+     
 
     });
-}
-
-
-
-// // set up form to hide or show 
-// const bookFormContainer = document.querySelector('#form-container');
-// const newBookButton = document.querySelector(".new-book-btn");
-
-// // add event listener to the add btn to be able to toggle it 
-// newBookButton.addEventListener("click", () => {
-
-//   seeBookForm = !seeBookForm;
-//   if (seeBookForm) {
-//     bookFormContainer.style.display = "block";
-//   } else {
-//     bookFormContainer.style.display = "none";
-//   }
-
-// });
+    
+});
 
 
 
 
 
+// render the books we have saved
+// function getBook() {
+//     fetch(endPoint)
+//     .then(res => res.json())
+//     .then(book => { 
+//         book.data.forEach(book => {
+//           // debugger;
+//           // newBook is a instacnce of the book class 
+//           let newBook = new Book(book, book.attributes )
+//           document.querySelector('#book-container').innerHTML += newBook.renderBook()
+          
+//         })
 
-
-
-
+//     });
+// }
 
 
 
@@ -120,6 +109,9 @@ function createFormHandler(e) {
   }
   e.target.reset()
 }
+
+
+
 
 
 
