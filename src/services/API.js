@@ -23,4 +23,64 @@ class API {
         
     }
 
+
+
+    // get the basic genre table onto the DOM
+   static GENRE_TABLE_URL = "http://localhost:3000/api/v1/genres"
+    // static fetchallGenres() {
+
+    //   fetch(this.GENRE_TABLE_URL)
+    //   .then(response => response.json())
+    //   .then(genre => {
+    //     genre.data.forEach(genre =>  { 
+          
+    //       // {console.log(genre)}
+
+
+    //       let newGenre = new Genre(genre, genre.attributes )
+    //       document.querySelector('#genres-show').innerHTML += 
+    //       newGenre.renderGenre()
+    //       Genre.all.push(newGenre)
+    //     })
+    //   })
+
+    // }
+
+
+
+  
+
+
+
+    static fetchGenreBooks() {
+
+     
+     
+      var x = document.getElementById("book-genres");
+
+      {console.log(x.value)}
+      
+
+
+        fetch(`${this.GENRE_TABLE_URL}/${x.value}/books`)
+        .then(response => response.json())
+        .then(genre => {
+
+          document.querySelector('#genres-show').innerHTML = " "
+          genre.data.forEach(genre => {
+
+            // {console.log(genre)}
+
+            let newGenre = new Genre(genre, genre.attributes)
+            document.querySelector('#genres-show').innerHTML +=
+               newGenre.renderGenre()
+              Genre.all.push(newGenre)
+            
+          })
+
+      })
+        
+        
+    }
+          
 }

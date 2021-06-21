@@ -30,7 +30,9 @@ class Book {
             <p>${this.genre}</p>
             <button data-id="${this.id}" class="delete-btn">Delete</button>
           </div>
-          <br><br>`;
+
+          <br><br>
+        `;
       
                
       }

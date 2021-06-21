@@ -1,5 +1,5 @@
-// const endPoint = "http://localhost:3000/api/v1/books"
-let seeBookForm = false;
+const endPoint = "http://localhost:3000/api/v1/books"
+let seeBookForm = true;
 
 
 
@@ -14,10 +14,12 @@ document.addEventListener("click", (e) =>{ console.log("You just clicked on", e.
 document.addEventListener('DOMContentLoaded', () => {
     // getBook()
     API.fetchallBooks()
-
-
+    // API.fetchallGenres()
+    API.fetchGenreBooks()
 
     // get the data from the form 
+
+    
     const bookForm = document.querySelector("#create-book-form")
     // event to listen for the click on the form  
     bookForm.addEventListener("submit", (e) => createFormHandler(e))
@@ -45,24 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-// render the books we have saved
-// function getBook() {
-//     fetch(endPoint)
-//     .then(res => res.json())
-//     .then(book => { 
-//         book.data.forEach(book => {
-//           // debugger;
-//           // newBook is a instacnce of the book class 
-//           let newBook = new Book(book, book.attributes )
-//           document.querySelector('#book-container').innerHTML += newBook.renderBook()
-          
-//         })
-
-//     });
-// }
+function genreFunction(){
+  API.fetchGenreBooks()
+}
 
 
 
@@ -133,10 +120,12 @@ selectedBook.addEventListener("click", event =>{event.preventDefault();
       })
       .then(response => response.json())
       .then(event.target.parentElement.remove())
-
-    
     }
 })
 
 
+
+
+// const genreSel = document.getElementById("book-genres");
+// genreSel.addEventListener("change", API.fetchGenreBooks)
 

@@ -7,50 +7,86 @@
         <title>Books List</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        
     </head>
-    <body style="background-color:grey;">
-
     
-      <div id="book-container" >
-        
-      </div>
 
-      <p style="text-align:center">
-        <button id="new-book-btn">Add Book </button>
-        <br><br><br>
-      </p>
+    <body style="background-color:grey;">
+     
+
+          <div id="book-container" >
+            
+          </div>
+
+          <p style="text-align:center">
+            <button id="new-book-btn">Add Book </button>
+            <br><br><br>
+          </p>
 
 
-        <!-- form to get books -->
-      <div class="form-container",style="text-align:center">
-      
-        <form id="create-book-form", style="">
+            <!-- form to get books -->
+          <div class="form-container",style="text-align:center">
           
-      
-          <input id='input-title' type="text" name="title" value="" placeholder="Enter your book name..." class="input-text">
-          <br><br>
-          <input id='input-author' name="author", value="" placeholder="Enter your book author..."></input>
-          <br><br>
-          <input id='input-url' type="text" name="image" value="" placeholder="Enter your book image URL..." class="input-text">
-          <br><br>
-      
-          <select id="genres" name="genres">
-            <option value="1">Comedy</option>
-            <option value="2">History</option>
-            <option value="3">Novel</option>
-          </select>
-          <br><br>
-      
-          <input id= 'create-button' type="submit" name="submit" value="Create New book" class="submit">
-        </form>
-      </div>
+            <form id="create-book-form", style="">
+              
+          
+              <input id='input-title' type="text" name="title" value="" placeholder="Enter your book name..." class="input-text">
+              <br><br>
+              <input id='input-author' name="author", value="" placeholder="Enter your book author..."></input>
+              <br><br>
+              <input id='input-url' type="text" name="image" value="" placeholder="Enter your book image URL..." class="input-text">
+              <br><br>
+          
+              <select id="genres" name="genres">
+                <option value="1">Comedy</option>
+                <option value="2">History</option>
+                <option value="3">Novel</option>
+              </select>
+              <br><br>
+          
+              <input id= 'create-button' type="submit" name="submit" value="Create New book" class="submit">
+            </form>
+          </div>
 
-      <br><br>
+          <br><br>
+
+
+          <!-- Showcase Books By Genre -->
+          <h1>Books By Genre</h1>
+          <div class="book-genre"> 
+
+            <div id="genre-selector">
+
+              <select id="book-genres" name="genres" onchange = "genreFunction()">
+                <option value="1">Comedy</option>
+                <option value="2">History</option>
+                <option value="3">Novel</option>
+                
+              </select>
+              
+            </div>
+
+
+            
+
+
+
+            <div id="genres-show">
+                <!-- <h1>Hi </h1> -->
+            </div>
+
+
+          </div>
+
+      
+    
+    </body>
+
 
         
-      
-      <script type= "text/javascript" src="src/index.js"></script>
-      <script type= "text/javascript" src="src/book.js"></script>
-      <script type= "text/javascript" src="src/services/API.js"></script>
-    </body>
+  <script type= "text/javascript" src="src/index.js"></script>
+  <script type= "text/javascript" src="src/book.js"></script>
+  <script type= "text/javascript" src="src/genre.js"></script>
+  <script type= "text/javascript" src="src/services/API.js"></script>
+   
 </html>
