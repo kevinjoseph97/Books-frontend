@@ -24,11 +24,13 @@ class Book {
         // console.log(this);
         return `
           <div data-id=${this.id}>
-            <img src=${this.book_img} height="200" width="250">
+            <img src=${this.book_img} >
             <h3>${this.title}</h3>
-            <p>${this.author}</p>
+            <h2>${this.author}</h2>
             <p>${this.genre}</p>
             <button data-id="${this.id}" class="delete-btn">Delete</button>
+            <button data-id="${this.id}" 
+            <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
           </div>
 
           <br><br>
