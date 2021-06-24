@@ -27,7 +27,7 @@ class Book {
             <img src=${this.book_img} >
             <h3>${this.title}</h3>
             <h2>${this.author}</h2>
-            <p>${this.genre}</p>
+            
             <button data-id="${this.id}" class="delete-btn">Delete</button>
             <button data-id="${this.id}" class="edit-btn">Edit</button>
             <button data-id="${this.id}" 

@@ -2,6 +2,8 @@ const endPoint = "http://localhost:3000/api/v1/books"
 // let seeBookForm = true;
 let searchedBooks = [];
 
+let showeditForm = true;
+
 
 
 
@@ -40,6 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //     bookFormContainer.style.display = "none";
     //   }
     // });
+
+    
+
+
+
+
+
+
+
     
     
   });
@@ -49,8 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookList = document.getElementById('bookList');
   const searchBar = document.getElementById("searchBar");
  
-  
-  
   
   searchBar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
@@ -260,6 +269,10 @@ editBook.addEventListener("click", event =>{event.preventDefault();
     })
 
 
+    
+
+
+
 
 
     editForm.addEventListener("click", (event) =>{event.preventDefault();
@@ -273,6 +286,7 @@ editBook.addEventListener("click", event =>{event.preventDefault();
         let newImg = editForm.querySelector(".input-edit-img").value
         console.log(newImg)
         let newGenre = document.querySelector("#genres").value
+        
         console.log(newGenre)
 
         // const newInfo = {
@@ -309,14 +323,6 @@ editBook.addEventListener("click", event =>{event.preventDefault();
          
         })
 
-
-
-        
-
-
-        
-
-      
       }
     
     })
