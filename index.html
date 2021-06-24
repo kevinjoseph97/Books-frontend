@@ -8,32 +8,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-          .fa {
-            font-size: 30px;
-            cursor: pointer;
-            user-select: none;
-          }
-          
-          .fa:hover {
-            color: darkblue;
-          }
-          </style>
+        
         
     </head>
     
 
-    <body style="background-color:grey;">
+    <body>
+
+          
      
 
-          <div id="book-container" >
+          <div class=container" >
+
+            <p style="text-align:center"> 
+              <h1>&#128215;&#128215;All Books &#128215;&#128215;</h1>
+              <br><br><br>
+            </p> 
+
+
+            <div id="searchWrapper">
+              <input
+                  type="text"
+                  name="searchBar"
+                  id="searchBar"
+                  placeholder="Book Search"
+              />
+            </div>
+
+          
+
+            <ul id="bookList"></ul>
             
           </div>
-
-          <p style="text-align:center">
-            <!-- <button id="new-book-btn">Add Book </button> -->
-            <br><br><br>
-          </p>
 
 
             <!-- form to get books -->
@@ -97,6 +103,7 @@
 
         
   <script type= "text/javascript" src="src/index.js"></script>
+  <script type= "text/javascript" src="css/main.css"></script>
   <script type= "text/javascript" src="src/book.js"></script>
   <script type= "text/javascript" src="src/genre.js"></script>
   <script type= "text/javascript" src="src/services/API.js"></script>

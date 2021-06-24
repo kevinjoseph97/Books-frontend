@@ -15,7 +15,7 @@ class API {
               // newBook is a instacnce of the book class 
             //   being able to pass in a whole object from constructor
               let newBook = new Book(book, book.attributes )
-              document.querySelector('#book-container').innerHTML += newBook.renderBook()
+              document.getElementById('bookList').innerHTML += newBook.renderBook()
               
             })
     

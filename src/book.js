@@ -29,6 +29,7 @@ class Book {
             <h2>${this.author}</h2>
             <p>${this.genre}</p>
             <button data-id="${this.id}" class="delete-btn">Delete</button>
+            <button data-id="${this.id}" class="edit-btn">Edit</button>
             <button data-id="${this.id}" 
             <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
           </div>
@@ -38,8 +39,11 @@ class Book {
       
                
       }
+
+
+
+
 }
 
-
-
 Book.all = [];
+
