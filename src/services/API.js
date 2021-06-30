@@ -8,14 +8,17 @@ class API {
     static fetchallBooks() {
 
         fetch(this.BASE_URL)
+        // API will send back JSON... change into js object 
         .then(response => response.json())
+        //  return another promise ..log the object we got from API ... 
         .then(book => { 
             book.data.forEach(book => {
               // debugger;
               // newBook is a instacnce of the book class 
             //   being able to pass in a whole object from constructor
+            // since wer're using fast json we get book.attributes
               let newBook = new Book(book, book.attributes )
-              document.getElementById('bookList').innerHTML += newBook.renderBook()
+              document.getElementById('bookList').innerHTML += newBook.renderBook() 
               
             })
     
