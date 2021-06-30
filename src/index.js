@@ -1,19 +1,14 @@
-const endPoint = "http://localhost:3000/api/v1/books"
+const baseURL = "http://localhost:3000/api/v1/books"
 // let seeBookForm = true;
-let searchedBooks = [];
-
-let showeditForm = true;
-
+// let searchedBooks = [];
+// let showeditForm = true;
 
 
-
-// so we can see what we are clicking on and dealing with 
-document.addEventListener("click", (e) =>{ console.log("You just clicked on", e.target)})
 
 
 
 // console log once the DOM is loaded 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (e) => {
     // getBook()
     API.fetchallBooks()
     
@@ -29,19 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // const bookFormContainer = document.querySelector('.form-container');
-    // const newBookButton = document.querySelector("#new-book-btn");
-
-    // add event listener to the add btn to be able to toggle it 
-    // newBookButton.addEventListener("click", () => {
-
-    //   seeBookForm = !seeBookForm;
-    //   if (seeBookForm) {
-    //     bookFormContainer.style.display = "block";
-    //   } else {
-    //     bookFormContainer.style.display = "none";
-    //   }
-    // });
 
     
 
@@ -56,12 +38,43 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
+  // so we can see what we are clicking on and dealing with 
+document.addEventListener("click", (e) =>{ console.log("You just clicked on", e.target)
+
+
+  if (e.target.className === "like") {
+    const id = e.target.dataset.id
+    console.log(id)
+
+    let i = 0
+    Book.all.map(book => {
+      if (book.id == id) {
+          Book.all[i].fav =  !Book.all[i].fav;
+          console.log(book)
+      } i++;
+  
+    })
+
+  }
+
+})
+
+
+
+
+
+
+
+
+
+
   // search bar 
   const bookList = document.getElementById('bookList');
   const searchBar = document.getElementById("searchBar");
  
   
   searchBar.addEventListener('keyup', (e) => {
+    // make this case sensitive... lowercase()
     const searchString = e.target.value.toLowerCase();
 
     const filteredBooks = Book.all.filter((book) =>{
@@ -69,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       book.title.toLowerCase().includes(searchString)
      );
     });
-      console.log(filteredBooks)
+      // console.log(filteredBooks)
 
     document.getElementById('bookList').innerHTML = " "
     filteredBooks.forEach(book => {
@@ -89,26 +102,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// show books by genre
-function genreFunction(){
-  API.fetchGenreBooks()
-}
+  // show books by genre
+  function genreFunction(){
+    // whenever the genre is changed we get back the books associated with
+    API.fetchGenreBooks()
+  }
 
 
-// like button 
-function myFunction(x) {
-  
-  // classList will help manioulate 
-  x.classList.toggle("fa-thumbs-down");
-}
+
+
+
+
+
+
+
 
 
 
 
 // implement a form handler adn make POST request
 function createFormHandler(e) {
+  // makes the page not reload as default action would have 
   e.preventDefault();
-  // grab all the values
+  // grab all the values from what the user typed
   // debugger;
   const userTitle = document.querySelector("#input-title").value
   const userAuthor = document.querySelector("#input-author").value
@@ -117,9 +133,10 @@ function createFormHandler(e) {
   const genreId = parseInt(userGenre)
   postFetch(userTitle, userAuthor, userImg, genreId)
 
+  // this is the post function that will get called above... 
   function postFetch(title, author, book_img, genre_id) {
     // console.log(title, author, book_img, genre_id);
-    fetch(endPoint, {
+    fetch(baseURL, {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
@@ -138,6 +155,7 @@ function createFormHandler(e) {
     }) 
   
   }
+  // resets the field with empty boxes 
   e.target.reset()
 }
 
@@ -157,7 +175,7 @@ selectedBook.addEventListener("click", event =>{event.preventDefault();
       const id = event.target.dataset.id
         
       
-      fetch(`${endPoint}/${id}`, {
+      fetch(`${baseURL}/${id}`, {
         method: "DELETE",
         headers: {"Content-Type": "application/json",
         'Accept': 'application/json'}
@@ -179,9 +197,12 @@ selectedBook.addEventListener("click", event =>{event.preventDefault();
 // edit form 
 // maybe move this function above
 const editBook = document.getElementById("bookList")
+console.log(editBook)
 editBook.addEventListener("click", event =>{event.preventDefault();
 
   if (event.target.matches(".edit-btn")){
+
+    // get info to put into the placeholder of form
     const bookEdit = event.target.parentElement
     console.log(bookEdit)
     const bookSE = bookEdit.querySelector("h3").innerText
@@ -200,7 +221,7 @@ editBook.addEventListener("click", event =>{event.preventDefault();
       <h2>Edit This Book</h2>
 
 
-      <form class="title-edit-form">
+      <form class="book-edit-form">
 
       <br>
       <h4> Title:</h4>
@@ -263,17 +284,14 @@ editBook.addEventListener("click", event =>{event.preventDefault();
     {console.log(editBook)} 
 
 
+
     const closeBtn = editForm.querySelector(".close-btn")
     closeBtn.addEventListener("click", (e)=> {
     editForm.remove()
     })
 
 
-    
-
-
-
-
+  
 
     editForm.addEventListener("click", (event) =>{event.preventDefault();
      
@@ -289,19 +307,12 @@ editBook.addEventListener("click", event =>{event.preventDefault();
         
         console.log(newGenre)
 
-        // const newInfo = {
-        //   title: newTitle,
-        //   author: newAuthor,
-        //   book_img: newImg,
-        //   genreId: newGenre
-        // }
-
 
         const id = event.target.dataset.id
         console.log(id)
 
 
-        fetch(`${endPoint}/${id}`, {
+        fetch(`${baseURL}/${id}`, {
           method: "PATCH",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({
@@ -326,24 +337,6 @@ editBook.addEventListener("click", event =>{event.preventDefault();
       }
     
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
